@@ -14,18 +14,13 @@ class BST():
 
         while cur:
             if node.data <= cur.data:
-                parent = (cur, 'lChild')
-                cur = cur.lChild
+                parent = (cur, 'left')
+                cur = cur.left
             else:
-                parent = (cur, 'rChild')
-                cur = cur.rChild
+                parent = (cur, 'right')
+                cur = cur.right
         
         parent, child = parent
         setattr(parent, child, node)
 
-        
-
-bst = BST(BstNode(10))
-bst.insert(7)
-
-        
+    
