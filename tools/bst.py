@@ -6,6 +6,9 @@ class BST():
         self.root = root
     
     def insert(self, node):
+        if type(node) is not BstNode:
+            node = BstNode(node)
+
         cur = self.root
         parent = cur
 
@@ -18,10 +21,11 @@ class BST():
                 cur = cur.rChild
         
         parent, child = parent
-        parent[child] = node
+        setattr(parent, child, node)
 
         
 
-        
+bst = BST(BstNode(10))
+bst.insert(7)
 
         
