@@ -21,7 +21,7 @@ class Heap():
             rci = 2 * i + 2
             
             lc = arr[lci]
-            rc = arr[rci]
+            rc = arr[rci] if rci < len(arr) else lc
             ci = arr[i]
             
             max_i = lci if lc >= rc else rci
@@ -33,9 +33,4 @@ class Heap():
             swap(arr, i, max_i)
             Heap.max_heapify(arr, max_i)
             
-
-
-
-
-print(Heap([10,17,3,4,2,6,4]).heap)
 
