@@ -3,35 +3,39 @@ from misc import swap
 class Heap():
 
     def __init__(self, data):
-        self.data = data
-        self.leaf_line = len(self.data) // 2
-
-        for i in reversed(range(self.leaf_line)):
-            self.max_heapify(i)
-        
-        print(self.data)
+        self.heap = Heap.build_max_heap(data)
     
-    def max_heapify(self, i):
-        if i < self.leaf_line:
+    @staticmethod
+    def build_max_heap(data):
+        # from i / 2 downto 0 as everything beyond are already leaves
+        # and thus satisfy the max heap property
+        for i in reversed(range(len(data) // 2)): 
+            Heap.max_heapify(data, i)
+        
+        return data
+
+    @staticmethod
+    def max_heapify(arr, i):
+        if i < len(arr) // 2:
             lci = 2 * i + 1
             rci = 2 * i + 2
             
-            lc = self.data[lci]
-            rc = self.data[rci]
-            ci = self.data[i]
+            lc = arr[lci]
+            rc = arr[rci]
+            ci = arr[i]
             
             max_i = lci if lc >= rc else rci
-            max_c = self.data[max_i]
+            max_c = arr[max_i]
 
             if ci >= max_c:
                 return
         
-            swap(self.data, i, max_i)
-            self.max_heapify(max_i)
+            swap(arr, i, max_i)
+            Heap.max_heapify(arr, max_i)
             
 
 
 
 
-Heap([10,17,3,4,2,6,4])
+print(Heap([10,17,3,4,2,6,4]).heap)
 
