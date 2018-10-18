@@ -8,6 +8,31 @@ def heap_sort(arr):
     while heap.size:
         heap.extract_max()
 
+def merge_sort(arr):
+    if len(arr) == 1:
+        return arr
+
+    left=merge_sort(arr[:len(arr)//2])
+    right=merge_sort(arr[len(arr)//2:])
+    
+    return merge(left,right)
+
+def merge(left,right):
+    merged = []
+    lt = rt = 0
+
+    while lt < len(left) and rt < len(right):
+        if left[lt] <= right[rt]:
+            merged.append(left[lt])
+            lt+=1
+        else:
+            merged.append(right[rt])
+            rt+=1
+    
+    merged.extend(right[rt:]) if rt < len(right) else merged.extend(left[lt:])
+
+    return merged
+    
 
 def insertion_sort(arr):
     for i in range(1, len(arr)):
@@ -20,7 +45,7 @@ def insertion_sort(arr):
 def insertion_sort_bin(arr):
     for i in range(1, len(arr)):
         
-        # on average 14 % faster than regular see bench.py
+        # on average 20 % faster than regular see bench.py
         e=i-1
         s=0
      
