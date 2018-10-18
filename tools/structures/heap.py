@@ -1,4 +1,4 @@
-from .misc import swap
+from ..misc import swap
 
 class Heap():
 
@@ -41,6 +41,3 @@ class Heap():
         Heap.max_heapify(self, 0)
         return max_val
     
-    def sort(self):
-        while self.size:
-            yield self.extract_max()
