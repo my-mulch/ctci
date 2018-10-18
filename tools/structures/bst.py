@@ -13,14 +13,9 @@ class BST():
         parent = cur
 
         while cur:
-            if node.data <= cur.data:
-                parent = (cur, 'left')
-                cur = cur.left
-            else:
-                parent = (cur, 'right')
-                cur = cur.right
+            path = 'left' if node.data <= cur.data else 'right'
+            parent = cur, path
+            cur = getattr(cur, path)
         
         parent, child = parent
         setattr(parent, child, node)
-
-    
