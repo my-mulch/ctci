@@ -1,5 +1,4 @@
-from misc import swap
-import numpy as np
+from .misc import swap
 
 class Heap():
 
@@ -45,7 +44,3 @@ class Heap():
     def sort(self):
         while self.size:
             yield self.extract_max()
-
-heap = Heap(np.random.randn(100000).tolist())
-Heap.build_max_heap(heap)
-list(heap.sort())
