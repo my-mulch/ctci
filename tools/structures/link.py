@@ -7,15 +7,24 @@ class LinkedList():
         self.tail = head
     
     def __str__(self):
-        to_str = ''
-        runner = self.head
 
+        def callback(node):
+            callback.state += "- |  {}  | -".format(node.data)
+        
+        callback.state = ''
+
+        return self.traverse(callback)
+
+    def traverse(self, fn):
+        runner = self.head
+        
         while(runner):
-            to_str += "- |  {}  | -".format(runner.data)
+            fn(runner)
             runner = runner.next
         
-        return to_str
+        return fn.state
 
+        
 
     def insert(self, node, insertion_point):
         if type(node) is not LinkNode:
@@ -38,9 +47,11 @@ class LinkedList():
     
 
 dll = LinkedList()
+
 dll.insert(10, 'tail')
 dll.insert(17, 'tail')
 dll.insert(13, 'head')
+
 
 print(dll)
 
