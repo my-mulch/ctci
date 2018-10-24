@@ -9,13 +9,15 @@ class BST():
         if type(node) is not BstNode:
             node = BstNode(node)
 
+        if not self.root:
+            self.root = node
+            return
+            
         cur = self.root
-        parent = cur
-
-        while cur:
-            path = 'left' if node.data <= cur.data else 'right'
-            parent = cur, path
-            cur = getattr(cur, path)
         
-        parent, child = parent
-        setattr(parent, child, node)
+        while cur:
+            child = 'left' if node.data <= cur.data else 'right'
+            setattr(node, 'parent', cur)
+            cur = getattr(cur, child)
+        
+        setattr(node.parent, child, node)
