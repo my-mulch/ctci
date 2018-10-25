@@ -11,8 +11,6 @@ dll.insert(17, 'head')
 dll.insert(22, 'head')
 dll.insert(22, 'tail')
 
-print(dll)
+kth_to_last = chapter2.kth_to_last(dll, 1)
 
-chapter2.delete_dups(dll)
-
-print(dll)
+print(kth_to_last.data)
