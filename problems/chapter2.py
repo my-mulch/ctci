@@ -77,3 +77,22 @@ def sum_lists(a, b, sum_list):
             
     return sum_list
 
+def is_palindrome(linked_list):
+    twox_runner = linked_list.head
+    head_runner = linked_list.head
+    tail_runner = linked_list.tail
+
+    while twox_runner:
+        twox_runner = twox_runner.next
+        
+        if twox_runner: # prevents that runoff the edge shiet
+            twox_runner = twox_runner.next
+
+        if head_runner.data != tail_runner.data:
+            return False
+        
+        head_runner = head_runner.next
+        tail_runner = tail_runner.prev
+    
+    return True
+
