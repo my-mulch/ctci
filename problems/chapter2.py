@@ -18,15 +18,14 @@ def delete_dups(linked_list):
 
 
 def kth_to_last(linked_list, k):
-    length=0
-    runner=linked_list.head
-    while(runner):
-        length+=1
-        runner=runner.next
+    r1 = linked_list.head
+    r2 = linked_list.head
     
-    runner=linked_list.head
-    while(length>k):
-        length-=1
-        runner=runner.next
+    for i in range(k):
+        r1 = r1.next
     
-    return runner
+    while(r1):
+        r1 = r1.next
+        r2 = r2.next
+    
+    return r2
