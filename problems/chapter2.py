@@ -29,3 +29,9 @@ def kth_to_last(linked_list, k):
         r2 = r2.next
     
     return r2
+
+
+def delete_mid_node(mid_node):
+    next_node = mid_node.next
+    mid_node.data = next_node.data
+    mid_node.next = next_node.next
