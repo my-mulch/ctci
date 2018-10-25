@@ -1,21 +1,20 @@
 from problems import chapter2
 from tools.structures.link import LinkedList
 
-dll = LinkedList(node_variety='double')
+a = LinkedList(node_variety='double')
 
-dll.insert(9, 'tail')
-dll.insert(3, 'tail')
-dll.insert(8, 'tail')
-dll.insert(3, 'tail')
-dll.insert(1, 'tail')
-dll.insert(3, 'tail')
-dll.insert(6, 'tail')
-dll.insert(3, 'tail')
-dll.insert(4, 'tail')
-dll.insert(7, 'tail')
+a.insert(9, 'tail')
+a.insert(9, 'tail')
+a.insert(9, 'tail')
+a.insert(1, 'tail')
 
-print(dll)
+b = LinkedList(node_variety='double')
 
-chapter2.partition(dll, 4)
+b.insert(1, 'tail')
+b.insert(0, 'tail')
+b.insert(9, 'tail')
 
-print(dll)
+sum = LinkedList(node_variety='double')
+
+chapter2.sum_lists(a,b,sum)
+print(sum)

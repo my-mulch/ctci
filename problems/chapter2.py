@@ -51,3 +51,29 @@ def partition(linked_list, p):
         runner = runner.next
 
 
+def sum_lists(a, b, sum_list):
+    a_runner = a.tail
+    b_runner = b.tail
+    
+    carry = 0
+    while(a_runner or b_runner):
+        sum_digit = 0
+        
+        if a_runner:
+            sum_digit += a_runner.data
+            a_runner = a_runner.prev
+        
+        if b_runner:
+            sum_digit += b_runner.data
+            b_runner = b_runner.prev
+        
+        sum_digit += carry
+        new_digit = sum_digit % 10
+        carry = 1 if sum_digit > 9 else 0
+        sum_list.insert(new_digit, 'head')
+        
+    if carry:
+        sum_list.insert(carry, 'head')
+            
+    return sum_list
+
