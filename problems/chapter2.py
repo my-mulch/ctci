@@ -96,3 +96,32 @@ def is_palindrome(linked_list):
     
     return True
 
+def intersect(a,b):
+    a_runner = a.head
+    b_runner = b.head
+
+    stack_a = []
+    stack_b = []
+    
+    while a_runner:
+        stack_a.append(a_runner)
+        a_runner = a_runner.next
+
+    while(b_runner):
+        stack_b.append(b_runner)
+        b_runner = b_runner.next
+    
+    if stack_a[-1] is not stack_b[-1]:
+        return None
+    
+    a_last = None
+    b_last = None
+    previous = None
+
+    while(a_last is b_last):
+        previous = a_last
+        a_last = stack_a.pop()
+        b_last = stack_b.pop()
+
+    return previous
+
