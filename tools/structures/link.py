@@ -1,4 +1,4 @@
-from node.link_node import LinkNode
+from .node.link_node import LinkNode
 
 class LinkedList():
 
@@ -72,26 +72,3 @@ class LinkedList():
         setattr(node, point_old, insertion_node)
         setattr(self, insertion_point, node)
         
-    
-
-dll = LinkedList()
-
-dll.insert(10, 'tail')
-dll.insert(17, 'tail')
-dll.insert(13, 'head')
-
-dll.delete(13)
-dll.delete(17)
-dll.delete(10)
-
-dll.insert(11, 'head')
-dll.insert(47, 'head')
-dll.insert(22, 'head')
-dll.insert(22, 'tail')
-
-print(dll)
-
-
-
-
-
