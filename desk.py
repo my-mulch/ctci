@@ -2,35 +2,4 @@ from problems import chapter3
 import numpy as np
 
 
-queue = chapter3.StackQueue()
-
-queue.enqueue('a')
-queue.enqueue('b')
-queue.enqueue('c')
-queue.enqueue('d')
-queue.enqueue('e')
-
-print(queue.dequeue())
-print(queue.dequeue())
-print(queue.dequeue())
-
-queue.enqueue('f')
-queue.enqueue('g')
-queue.enqueue('h')
-queue.enqueue('i')
-
-print(queue.dequeue())
-print(queue.dequeue())
-
-queue.enqueue('j')
-queue.enqueue('k')
-queue.enqueue('l')
-queue.enqueue('m')
-
-print(queue.dequeue())
-print(queue.dequeue())
-print(queue.dequeue())
-print(queue.dequeue())
-print(queue.dequeue())
-print(queue.dequeue())
-print(queue.dequeue())
+print(chapter3.sort_stack([7,2,5,9,0,2,5,3,8,6,9,8,3,2,6,1]))

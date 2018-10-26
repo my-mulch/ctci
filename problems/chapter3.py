@@ -66,3 +66,20 @@ class StackQueue():
                 self.front.append(self.back.pop())
 
         return self.front.pop()
+
+
+def sort_stack(stack):
+    sorted_stack = []
+
+    while stack:
+        num_to_insert = stack.pop()
+
+        while sorted_stack and num_to_insert > sorted_stack[-1]:
+            stack.append(sorted_stack.pop())
+
+        sorted_stack.append(num_to_insert)
+
+        while stack and sorted_stack[-1] >= stack[-1]:
+            sorted_stack.append(stack.pop())
+    
+    return sorted_stack
