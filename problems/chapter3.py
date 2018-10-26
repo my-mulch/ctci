@@ -40,11 +40,29 @@ class MegaStack():
     def pop(self, data):
         if not self.stacks:
             return
-        
+
         if len(self.stacks[-1]) == 0:
             self.stacks.pop()  # removing empty last stack
-            
-            
+
         if self.stacks:
-            return self.stacks[-1].pop()        
-        
+            return self.stacks[-1].pop()
+
+
+class StackQueue():
+    def __init__(self):
+        self.back = []
+        self.front = []
+
+    def enqueue(self, data):
+        self.back.append(data)
+
+    def dequeue(self):
+        if not self.front:
+
+            if not self.back:
+                return
+
+            while self.back:
+                self.front.append(self.back.pop())
+
+        return self.front.pop()

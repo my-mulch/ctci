@@ -1,10 +1,36 @@
 from problems import chapter3
 import numpy as np
 
-stack = chapter3.MegaStack()
 
-nums = np.random.randint(0,10,1000)
+queue = chapter3.StackQueue()
 
-for num in nums:
-    getattr(stack, 'pop' if np.random.rand() < 0.5 else 'push')(num)
-    print(stack.stacks)
+queue.enqueue('a')
+queue.enqueue('b')
+queue.enqueue('c')
+queue.enqueue('d')
+queue.enqueue('e')
+
+print(queue.dequeue())
+print(queue.dequeue())
+print(queue.dequeue())
+
+queue.enqueue('f')
+queue.enqueue('g')
+queue.enqueue('h')
+queue.enqueue('i')
+
+print(queue.dequeue())
+print(queue.dequeue())
+
+queue.enqueue('j')
+queue.enqueue('k')
+queue.enqueue('l')
+queue.enqueue('m')
+
+print(queue.dequeue())
+print(queue.dequeue())
+print(queue.dequeue())
+print(queue.dequeue())
+print(queue.dequeue())
+print(queue.dequeue())
+print(queue.dequeue())
