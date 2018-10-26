@@ -83,3 +83,30 @@ def sort_stack(stack):
             sorted_stack.append(stack.pop())
     
     return sorted_stack
+
+class AnimalShelter():
+
+    def __init__(self, dogs, cats):
+        self.dogs = dogs
+        self.cats = cats
+    
+    def dequeue_any(self):
+        if not self.cats:
+            return top_dog.pop(0) 
+        
+        if not self.dogs:
+            return top_cat.pop(0)
+
+
+        top_dog = self.dogs[0]
+        top_cat = self.cats[0]
+       
+        if top_dog.time < top_cat.time:
+            return top_dog.pop(0)
+        else:
+            return top_cat.pop(0)
+    
+    def dequeue(self, animal_list='dogs'):
+        if getattr(self, animal_list):
+            return getattr(self, animal_list).pop(0)
+    
