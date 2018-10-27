@@ -19,3 +19,19 @@ class Graph():
             node = GraphNode(node)
 
         self.nodes.append(node)
+
+
+examples = [
+    Graph(nodes=[
+        GraphNode(data='A', adjacent=[1, 4]),
+        GraphNode(data='B', adjacent=[2, 7]),
+        GraphNode(data='C', adjacent=[0]),
+        GraphNode(data='D', adjacent=[0, 1, 8]),
+        GraphNode(data='E', adjacent=[9]),
+        GraphNode(data='F', adjacent=[4, 6]),
+        GraphNode(data='G', adjacent=[]),
+        GraphNode(data='H', adjacent=[6, 8, 9]),
+        GraphNode(data='I', adjacent=[1, 7]),
+        GraphNode(data='J', adjacent=[1, 5, 6])
+    ])
+]

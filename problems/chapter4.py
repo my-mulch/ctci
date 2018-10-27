@@ -71,3 +71,17 @@ def check_balance(root):
         return 'error'
 
     return left_height + right_height
+
+
+def validate_bst(root):
+    if not root:
+        return
+
+    if not root.data >= root.left.data:
+        return False
+
+    if not root.data <= root.right.data:
+        return False
+
+    validate_bst(root.left)
+    validate_bst(root.right)
