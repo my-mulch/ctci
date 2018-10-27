@@ -1,5 +1,6 @@
 from problems import chapter4
 from tools.structures import graph
+from tools.structures import bst
 
 
 A = graph.GraphNode(data=0, adjacent=[1, 4])
@@ -16,8 +17,15 @@ J = graph.GraphNode(data=9, adjacent=[1, 5, 6])
 the_graph = graph.Graph(nodes=[A, B, C, D, E, F, G, H, I, J])
 
 
-my_level_lists = chapter4.level_lists([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14])
+the_bst = bst.BST()
 
-print(my_level_lists)
+the_bst.insert(bst.BSTNode(11))
+the_bst.insert(bst.BSTNode(14))
+the_bst.insert(bst.BSTNode(13))
+the_bst.insert(bst.BSTNode(6))
+the_bst.insert(bst.BSTNode(3))
+the_bst.insert(bst.BSTNode(5))
+the_bst.insert(bst.BSTNode(8))
+the_bst.insert(bst.BSTNode(15))
 
-
+print(chapter4.check_balance(the_bst.root))
