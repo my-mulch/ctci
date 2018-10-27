@@ -2,11 +2,11 @@ from .base_node import BaseNode
 
 
 class GraphNode(BaseNode):
-    def __init__(self, data):
+    def __init__(self, data, adjacent=[]):
         super().__init__(data)
 
-        self.visited = True
-        self.adjacent = []
+        self.visited = False
+        self.adjacent = adjacent
 
 
 class Graph():
