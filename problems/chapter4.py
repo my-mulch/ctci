@@ -24,3 +24,15 @@ def path_exists(graph, a, b, verbose=False):
                 queue.append(node)
 
     return False
+
+
+def minimal_tree(arr, low, high):
+    mid = (high + low) // 2
+
+    if high < low:
+        return
+
+
+    print(arr[mid])
+    minimal_tree(arr, low, mid - 1)
+    minimal_tree(arr, mid + 1, high)
