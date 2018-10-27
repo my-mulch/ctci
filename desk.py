@@ -8,4 +8,5 @@ the_graph = graph.examples[0]
 the_bst = binary_search_tree.examples[0]
 the_bin_tree = binary_tree.examples[0]
 
-print(chapter4.successor(the_bin_tree.root.left.right))
+print(chapter4.successor(the_bin_tree.root.left.left.right))
+

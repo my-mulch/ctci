@@ -99,7 +99,15 @@ def successor(node, level=0):
         if node.right:
             return successor(node.right, level + 1)
         else:
+            runner = node
+
+            while(runner.parent):
+                runner = runner.parent
+
+                if runner.data > node.data:
+                    return runner
             
+            return None
     else:
         left = successor(node.left, level + 1)
         

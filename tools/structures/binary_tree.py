@@ -22,16 +22,16 @@ class BinaryTree():
 
         for i in range(len(tree) // 2):
             node = tree[i]
-
+            
             if tree[2 * i + 1] is not None:
                 tree[2 * i + 1] = BinaryTreeNode(tree[2 * i + 1])
                 node.left = tree[2 * i + 1]
-                node.parent = node
+                node.left.parent = node
 
             if tree[2 * i + 2] is not None:
                 tree[2 * i + 2] = BinaryTreeNode(tree[2 * i + 2])
                 node.right = tree[2 * i + 2]
-                node.parent = node
+                node.right.parent = node
 
 
 examples = [BinaryTree([40, 25, 45, 20, 30, None, None, 17, 21, None,
