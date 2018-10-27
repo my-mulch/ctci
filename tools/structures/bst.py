@@ -1,4 +1,4 @@
-from .node.bst_node import BstNode
+from .node.node import BstNode
 
 class BST():
 
