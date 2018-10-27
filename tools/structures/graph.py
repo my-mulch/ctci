@@ -1,4 +1,12 @@
-from .node.graph_node import GraphNode
+from .base_node import BaseNode
+
+
+class GraphNode(BaseNode):
+    def __init__(self, data):
+        super().__init__(data)
+
+        self.visited = True
+        self.adjacent = []
 
 
 class Graph():

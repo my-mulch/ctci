@@ -1,4 +1,13 @@
-from .node.node import BstNode
+from .base_node import BaseNode
+
+class BSTNode(BaseNode):
+    def __init__(self, data):
+        super().__init__(data)
+
+        self.left = None
+        self.right = None
+        self.parent = None
+
 
 class BST():
 
@@ -6,8 +15,8 @@ class BST():
         self.root = root
     
     def insert(self, node):
-        if type(node) is not BstNode:
-            node = BstNode(node)
+        if type(node) is not BSTNode:
+            node = BSTNode(node)
 
         if not self.root:
             self.root = node

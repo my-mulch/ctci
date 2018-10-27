@@ -1,4 +1,20 @@
-from .node.link_node import SingleLinkNode, DoubleLinkNode
+from .base_node import BaseNode
+
+
+class DoubleLinkNode(BaseNode):
+    def __init__(self, data):
+        super().__init__(data)
+
+        self.next = None
+        self.prev = None
+
+
+class SingleLinkNode(BaseNode):
+    def __init__(self, data):
+        super().__init__(data)
+
+        self.next = None
+
 
 class LinkedList():
 
@@ -9,13 +25,13 @@ class LinkedList():
         self.head = None if data is None else self.node_variety(data)
         self.tail = None if data is None else self.node_variety(data)
 
-    
     def __str__(self):
         link_symbol = '=' if self.node_variety is DoubleLinkNode else '-'
 
         def callback(previous, node):
-            callback.state += "{1} |  {0}  | {1}".format(node.data, link_symbol)
-        
+            callback.state += "{1} |  {0}  | {1}".format(
+                node.data, link_symbol)
+
         callback.state = ''
         callback.done = False
 
@@ -24,16 +40,16 @@ class LinkedList():
     def traverse(self, fn):
         runner = self.head
         previous = self.head
-        
+
         while(runner):
             fn(previous, runner)
-            
+
             if fn.done:
                 break
-            
+
             previous = runner
             runner = runner.next
-        
+
         return fn.state
 
     def delete(self, data):
@@ -49,7 +65,7 @@ class LinkedList():
                         location = 'head' if self.head is node else 'tail'
                         pointnew = 'next' if self.head is node else 'prev'
                         pointold = 'prev' if self.head is node else 'next'
-                        
+
                         end_node = getattr(self, location)
                         new_node = getattr(end_node, pointnew)
                         setattr(self, location, new_node)
@@ -60,25 +76,21 @@ class LinkedList():
                 elif self.node_variety == SingleLinkNode:
                     if node is self.head:
                         self.head = self.head.next
-                        
+
                         if self.head is None:
                             self.tail = None
 
                     elif node is self.tail:
                         self.tail = previous
                         self.tail.next = None
-                    
+
                     else:
                         previous.next = node.next
-                        
 
-                        
-        
         callback.state = ''
         callback.done = False
-        
-        self.traverse(callback)
 
+        self.traverse(callback)
 
     def insert(self, node, insertion_point):
         if type(node) is not self.node_variety:
@@ -88,25 +100,22 @@ class LinkedList():
             self.head = node
             self.tail = node
             return node
-        
+
         if self.node_variety == DoubleLinkNode:
             point_new = 'prev' if insertion_point == 'head' else 'next'
             point_old = 'next' if insertion_point == 'head' else 'prev'
-            
+
             insertion_node = getattr(self, insertion_point)
 
             setattr(insertion_node, point_new, node)
             setattr(node, point_old, insertion_node)
 
-        
         elif self.node_variety == SingleLinkNode:
             point_new = 'next'
             insertion_node = node if insertion_point == 'head' else self.tail
             insertion_dest = node if insertion_point == 'tail' else self.head
-            
+
             setattr(insertion_node, point_new, insertion_dest)
-        
+
         setattr(self, insertion_point, node)
         return node
-
-        
