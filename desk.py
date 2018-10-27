@@ -16,4 +16,8 @@ J = graph.GraphNode(data=9, adjacent=[1, 5, 6])
 the_graph = graph.Graph(nodes=[A, B, C, D, E, F, G, H, I, J])
 
 
-chapter4.minimal_tree([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 0, 15)
+my_level_lists = chapter4.level_lists([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14])
+
+print(my_level_lists)
+
+

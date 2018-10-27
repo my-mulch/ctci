@@ -1,3 +1,5 @@
+import math
+
 
 def path_exists(graph, a, b, verbose=False):
     a.visited = True
@@ -32,7 +34,20 @@ def minimal_tree(arr, low, high):
     if high < low:
         return
 
-
     print(arr[mid])
     minimal_tree(arr, low, mid - 1)
     minimal_tree(arr, mid + 1, high)
+
+
+def level_lists(binary_tree):
+    my_level_lists = {}
+
+    for i, node in enumerate(binary_tree):
+        level = math.floor(math.log(i + 1, 2))
+
+        if level not in my_level_lists:
+            my_level_lists[level] = []
+
+        my_level_lists[level].append(node)
+
+    return my_level_lists
