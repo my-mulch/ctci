@@ -192,4 +192,22 @@ def bst_sequences(levels, sequence=[]):
         sequence.append(possible_sequence)
         bst_sequences(levels[1:])
         sequence.pop()
-    
+
+
+def same_tree(t1, t2):
+    if t1 is None and t2 is None:
+        return True
+
+    if t1.data != t2.data:
+        return False
+
+    return same_tree(t1.left, t2.left) and same_tree(t1.right, t2.right)
+
+def check_subtree(t1, t2):
+    if not t1:
+        return False
+        
+    if t1.data == t2.data:
+        return same_tree(t1, t2)
+
+    return check_subtree(t1.left, t2) or check_subtree(t1.right, t2)

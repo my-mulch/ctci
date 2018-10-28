@@ -1,15 +1,12 @@
-from problems import chapter4, chapter1
+from problems import chapter4
+from tools.structures.binary_tree import BinaryTree, BinaryTreeNode
 
-from tools.structures import graph
-from tools.structures import binary_search_tree
-from tools.structures import binary_tree
+import numpy as np
 
-the_graph = graph.examples[0]
-the_bst = binary_search_tree.examples[0]
-the_bin_tree = binary_tree.examples[0]
+tree1 = np.random.randint(0, 10, 25).tolist()
+tree2 = tree1.copy()
 
-levels = [chapter1.get_perms(level, all_perms=[])
-          for level in chapter4.level_lists(the_bin_tree)]
+bin_tree_1 = BinaryTree(tree=tree1)
+bin_tree_2 = BinaryTree(tree=tree2)
 
 
-chapter4.bst_sequences(levels)
