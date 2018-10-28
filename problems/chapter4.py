@@ -132,13 +132,48 @@ def build_order(projects, dependencies):
         for project in projects:
             if not project.incoming_edges and project.status is not type(project).COMPLETED:
                 print(project)
-                
+
                 for dependent in project.adjacent:
                     dependent.incoming_edges -= 1
 
                 project.status = type(project).COMPLETED
                 builds_remaining -= 1
                 built_something = True
-        
+
         if not built_something:
-            return False # circular dependency!
+            return False  # circular dependency!
+
+
+def covers(node, target):
+    if node is None:
+        return False
+
+    if node is target:
+        return True
+
+    return covers(node.left, target) or covers(node.right, target)
+
+
+def get_sibling(node):
+    if not node or not node.parent:
+        return None
+
+    return node.parent.left if node.parent.right is node else node.parent.right
+
+
+def first_common_ancestor(root, a, b):
+    if not covers(root, a) and not covers(root, b):
+        return None
+    elif covers(a, b):
+        return a
+    elif covers(b, a):
+        return b
+    
+    sibling = get_sibling(a)
+    parent = a.parent
+
+    while not covers(sibling, b):
+        sibling = get_sibling(parent)
+        parent = parent.parent
+    
+    return parent

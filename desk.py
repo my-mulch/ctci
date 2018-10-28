@@ -8,17 +8,7 @@ the_graph = graph.examples[0]
 the_bst = binary_search_tree.examples[0]
 the_bin_tree = binary_tree.examples[0]
 
+start = the_bin_tree.root.right.right
+target = the_bin_tree.root.right.left
 
-A = graph.GraphNode('A')
-B = graph.GraphNode('B')
-C = graph.GraphNode('C')
-D = graph.GraphNode('D')
-E = graph.GraphNode('E')
-F = graph.GraphNode('F')
-G = graph.GraphNode('G')
-H = graph.GraphNode('H')
-I = graph.GraphNode('I')
-
-
-chapter4.build_order(projects=[A, B, C, D, E, F, G, H, I],
-                     dependencies=[(C, A), (C, B), (B, F), (G, E), (F, H), (H, I), (E, C), (E, D), (D, C)])
+print(chapter4.first_common_ancestor(the_bin_tree.root, target, start))
