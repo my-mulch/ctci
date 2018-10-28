@@ -3,10 +3,6 @@ from tools.structures.binary_tree import BinaryTree, BinaryTreeNode
 
 import numpy as np
 
-tree1 = np.random.randint(0, 10, 25).tolist()
-tree2 = tree1.copy()
+tree = BinaryTree(tree=[7, -2, 3, -1, 4, 6, 1, 5, 6, None, None, 1, 4])
 
-bin_tree_1 = BinaryTree(tree=tree1)
-bin_tree_2 = BinaryTree(tree=tree2)
-
-
+chapter4.path_sums(tree.root, 10)

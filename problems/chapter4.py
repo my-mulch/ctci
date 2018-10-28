@@ -203,11 +203,30 @@ def same_tree(t1, t2):
 
     return same_tree(t1.left, t2.left) and same_tree(t1.right, t2.right)
 
+
 def check_subtree(t1, t2):
     if not t1:
         return False
-        
+
     if t1.data == t2.data:
         return same_tree(t1, t2)
 
     return check_subtree(t1.left, t2) or check_subtree(t1.right, t2)
+
+
+def path_sums(root, target, sums=[], count=[0]):
+    if root is None:
+        return
+
+    sums.append(0)
+    for i in range(len(sums)):
+        sums[i] += root.data
+        if sums[i] == target:
+            count[0] += 1
+
+    path_sums(root.left, target, sums)
+    path_sums(root.right, target, sums)
+
+    end_path = sums.pop()
+    for i in range(len(sums)):
+        sums[i] -= root.data

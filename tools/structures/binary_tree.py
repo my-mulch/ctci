@@ -35,6 +35,6 @@ class BinaryTree():
 
                     setattr(node, child_pointer, tree[child_index])
                     setattr(getattr(node, child_pointer), 'parent', node)
-
+    
 
 examples = [BinaryTree([6, 4, 8, 3, 5, 7, 9])]
