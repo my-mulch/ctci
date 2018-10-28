@@ -40,18 +40,22 @@ def minimal_tree(arr, low, high):
     minimal_tree(arr, mid + 1, high)
 
 
-def level_lists(binary_tree):
-    my_level_lists = {}
+def level_lists(bst):
+    levels = []
+    current_level = [bst.root]
 
-    for i, node in enumerate(binary_tree):
-        level = math.floor(math.log(i + 1, 2))
+    while current_level:
+        levels.append(current_level)
+        parents = current_level
+        current_level = []
 
-        if level not in my_level_lists:
-            my_level_lists[level] = []
+        for parent in parents:
+            if parent.left:
+                current_level.append(parent.left)
+            if parent.right:
+                current_level.append(parent.right)
 
-        my_level_lists[level].append(node)
-
-    return my_level_lists
+    return levels
 
 
 def check_balance(root):
@@ -168,12 +172,24 @@ def first_common_ancestor(root, a, b):
         return a
     elif covers(b, a):
         return b
-    
+
     sibling = get_sibling(a)
     parent = a.parent
 
     while not covers(sibling, b):
         sibling = get_sibling(parent)
         parent = parent.parent
-    
+
     return parent
+
+
+def bst_sequences(levels, sequence=[]):
+    if not levels:
+        print(sequence)
+        return
+
+    for possible_sequence in levels[0]:
+        sequence.append(possible_sequence)
+        bst_sequences(levels[1:])
+        sequence.pop()
+    

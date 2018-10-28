@@ -31,5 +31,4 @@ class BinaryTree():
                 node.right.parent = node
 
 
-examples = [BinaryTree([50, 25, 80, 15, 40, 60, 90, None,
-                        None, 32, 44, None, None, None, None])]
+examples = [BinaryTree([6, 4, 8, 3, 5, 7, 9])]

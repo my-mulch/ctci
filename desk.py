@@ -1,4 +1,4 @@
-from problems import chapter4
+from problems import chapter4, chapter1
 
 from tools.structures import graph
 from tools.structures import binary_search_tree
@@ -8,7 +8,8 @@ the_graph = graph.examples[0]
 the_bst = binary_search_tree.examples[0]
 the_bin_tree = binary_tree.examples[0]
 
-start = the_bin_tree.root.right.right
-target = the_bin_tree.root.right.left
+levels = [chapter1.get_perms(level, all_perms=[])
+          for level in chapter4.level_lists(the_bin_tree)]
 
-print(chapter4.first_common_ancestor(the_bin_tree.root, target, start))
+
+chapter4.bst_sequences(levels)
