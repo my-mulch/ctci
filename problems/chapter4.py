@@ -1,3 +1,4 @@
+from collections import defaultdict
 import math
 
 
@@ -106,13 +107,38 @@ def successor(node, level=0):
 
                 if runner.data > node.data:
                     return runner
-            
+
             return None
     else:
         left = successor(node.left, level + 1)
-        
+
         if left is not None:
             return left
 
         return node
         successor(node.right, level + 1)
+
+
+def build_order(projects, dependencies):
+    builds_remaining = len(projects)
+
+    while builds_remaining:
+        for (a, b) in dependencies:
+            if b.status is type(b).BLANK and a not in b.adjacent:
+                b.adjacent.add(a)
+                a.incoming_edges += 1
+
+        built_something = False
+        for project in projects:
+            if not project.incoming_edges and project.status is not type(project).COMPLETED:
+                print(project)
+                
+                for dependent in project.adjacent:
+                    dependent.incoming_edges -= 1
+
+                project.status = type(project).COMPLETED
+                builds_remaining -= 1
+                built_something = True
+        
+        if not built_something:
+            return False # circular dependency!
