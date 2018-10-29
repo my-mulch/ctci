@@ -214,19 +214,17 @@ def check_subtree(t1, t2):
     return check_subtree(t1.left, t2) or check_subtree(t1.right, t2)
 
 
-def path_sums(root, target, sums=[], count=[0]):
+def path_sums(root, target, sums=defaultdict(int), running_total=0):
     if root is None:
-        return
+        return 0
 
-    sums.append(0)
-    for i in range(len(sums)):
-        sums[i] += root.data
-        if sums[i] == target:
-            count[0] += 1
+    running_total += root.data
+    sums[running_total] += 1
+    count = sums[running_total - target]
 
-    path_sums(root.left, target, sums)
-    path_sums(root.right, target, sums)
+    count += path_sums(root.left, target, sums, running_total)
+    count += path_sums(root.right, target, sums, running_total)
 
-    end_path = sums.pop()
-    for i in range(len(sums)):
-        sums[i] -= root.data
+    sums[running_total] -= 1
+    
+    return count
