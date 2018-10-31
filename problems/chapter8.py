@@ -65,3 +65,28 @@ def power_set(arr, working_set=[], sets=[]):
     power_set(arr[1:], working_set, sets)
 
     return sets
+
+
+def recursive_multiply(a, b):
+    if not a:
+        return 0
+
+    return recursive_multiply(a - 1, b) + b
+
+
+def recursive_multiply_fast(a, b):
+    smaller = a if a < b else b
+    bigger = a if a > b else b
+    return recursive_multiply_fast_helper(smaller, bigger)
+
+
+def recursive_multiply_fast_helper(smaller, bigger):
+    if smaller == 0:
+        return 0
+
+    if smaller == 1:
+        return b
+
+    half_product = recursive_multiply_fast_helper(smaller >> 1, bigger)
+
+    return half_product + half_product + bigger if smaller % 2 else 0
