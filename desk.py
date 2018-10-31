@@ -1,15 +1,13 @@
-from problems import chapter8
+from problems import chapter17
 import numpy as np
 
-A, B, C = [1,
-           2,
-           3,
-           4,
-           5,
-           6,
-           7,
-           8], [], []
+n = 15
 
-chapter8.towers_of_hanoi(disks=len(A), source=A, buffer=C, target=B)
+nums = [i for i in range(n)]
+np.random.shuffle(nums)
 
-print(A, B, C)
+missing_index = np.random.randint(n)
+missing_value = nums[missing_index]
+del nums[missing_index]
+
+assert(missing_value == chapter17.find_missing(nums))
