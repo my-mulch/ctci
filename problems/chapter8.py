@@ -34,3 +34,23 @@ def robot_walk(grid, paths, memo=defaultdict(bool), r=0, c=0):
 
     memo[(r, c)] = successful_path
     return successful_path
+
+
+def magic_index(arr, left, right):
+    if right < left:
+        return -1
+
+    mid_index = (left + right) // 2
+    mid_value = arr[mid_index]
+
+    if mid_value == mid_index:
+        return mid_index
+
+    left_side = magic_index(arr, left, min(mid_index - 1, mid_value))
+
+    if left_side >= 0:
+        return left_side
+
+    right_side = magic_index(arr, max(mid_index + 1, mid_value), right)
+
+    return right_side
