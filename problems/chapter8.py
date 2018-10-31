@@ -54,3 +54,14 @@ def magic_index(arr, left, right):
     right_side = magic_index(arr, max(mid_index + 1, mid_value), right)
 
     return right_side
+
+
+def power_set(arr, working_set=[], sets=[]):
+    if not arr:
+        sets.append(working_set.copy())
+        return
+
+    power_set(arr[1:], [arr[0]] + working_set, sets)
+    power_set(arr[1:], working_set, sets)
+
+    return sets

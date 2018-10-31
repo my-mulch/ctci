@@ -1,6 +1,8 @@
-from problems import chapter8, chapter1
+from problems import chapter8
 import numpy as np
 
-arr = sorted(np.random.randint(0, 50, 21).tolist())
+power_set = chapter8.power_set([1, 2, 3, 4, 5])
+print(len(power_set))
 
-chapter1.binary_search(arr, 100)
+for s in power_set:
+    print(s)
