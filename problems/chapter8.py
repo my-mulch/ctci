@@ -90,10 +90,3 @@ def recursive_multiply_fast_helper(smaller, bigger):
     half_product = recursive_multiply_fast_helper(smaller >> 1, bigger)
 
     return half_product + half_product + bigger if smaller % 2 else 0
-
-
-def towers_of_hanoi(disks, source, buffer, target):
-    if disks:
-        towers_of_hanoi(disks - 1, source, target, buffer)
-        target.insert(0, source.pop(0))
-        towers_of_hanoi(disks - 1, buffer, source, target)
