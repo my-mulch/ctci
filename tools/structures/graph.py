@@ -21,6 +21,25 @@ class Graph():
 
         self.nodes.append(node)
 
+    @classmethod
+    def breadth_first_search(graph, S, E):
+        parent = {S: None}
+        level = {S: 0}
+        frontier = [S]
+        i = 1
+
+        while frontier:
+            next_level = []
+            for u in frontier:
+                for v in u.adjacent:
+                    if v not in level:
+                        level[v] = i
+                        parent[v] = u
+                        next_level.append(v)
+
+            frontier = next_level
+            i += 1
+
 
 examples = [
     Graph(nodes=[
