@@ -1,13 +1,16 @@
-from problems import chapter17
-import numpy as np
+from tools.structures import graph
 
-n = 15
+S = graph.GraphNode('S')
+A = graph.GraphNode('A')
+B = graph.GraphNode('B')
+C = graph.GraphNode('C')
+D = graph.GraphNode('D')
+E = graph.GraphNode('E')
 
-nums = [i for i in range(n)]
-np.random.shuffle(nums)
+S.adjacent = [A, B, C]
+B.adjacent = [C, D]
+C.adjacent = [E]
+D.adjacent = [C, E]
 
-missing_index = np.random.randint(n)
-missing_value = nums[missing_index]
-del nums[missing_index]
 
-assert(missing_value == chapter17.find_missing(nums))
+graph.Graph.depth_first_iterative(S)
